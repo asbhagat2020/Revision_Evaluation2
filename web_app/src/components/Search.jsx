@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './weatherCss/Search.css'
 const Search = ({ onSearch }) => {
-  const [city, setCity] = useState("pune");
+  const [city, setCity] = useState("");
 
   const handleSearch = () => {
     if (city.trim()) {
