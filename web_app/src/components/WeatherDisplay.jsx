@@ -9,9 +9,6 @@ import {
   FaCloudShowersHeavy,
 } from "react-icons/fa";
 import "./weatherCss/WeatherDisplay.css";
-
-
-
 const WeatherDisplay = ({ weatherData, forecastData, error }) => {
   const [unit, setUnit] = useState("metric");
 
@@ -28,28 +25,25 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
   if (!weatherData || !forecastData.length) return;
 
   const getWeatherIcon = () => {
-
     const mainWeather = weatherData.weather[0].main.toLowerCase();
     const desc = weatherData.weather[0].description.toLowerCase();
-    
-    if (desc.includes("moderate rain")) return <FaCloudShowersHeavy size={40} />;
-    if (desc.includes("light rain")) return <TiWeatherShowe size={40} />;
+    if (desc.includes("moderate rain"))
+      return <FaCloudShowersHeavy size={40} />;
+    if (desc.includes("light rain")) return <FaCloudRain size={40} />;
     if (desc.includes("scattered clouds")) return <FaCloudSun size={40} />;
     if (desc.includes("overcast clouds")) return <FaCloud size={40} />;
-   
     if (mainWeather.includes("rain")) return <FaCloudRain size={40} />;
     if (mainWeather.includes("cloud")) return <FaCloud size={40} />;
     if (mainWeather.includes("haze")) return <FaSmog size={40} />;
     if (mainWeather.includes("snow")) return <FaSnowflake size={40} />;
     if (mainWeather.includes("clear")) return <FaSun size={40} />;
-    return <FaCloud size={40} />; 
-    
+    return <FaCloud size={40} />; // Default icon
   };
   
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const day = date.getDate(); 
-    const month = date.getMonth() + 1; 
+    const day = date.getDate(); // Get the day of the month
+    const month = date.getMonth() + 1; // Months are zero-indexed, so add 1
     return `${day}/${month}`;
   };
 
