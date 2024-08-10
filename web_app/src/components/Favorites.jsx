@@ -9,7 +9,7 @@ const Favorites = ({ favorites, onRemove, onAdd }) => {
   const handleAddFavorite = () => {
     if (newFavorite.trim()) {
       onAdd(newFavorite);
-      setNewFavorite(""); // Clear the input field after adding
+      setNewFavorite(""); 
     } else {
       alert("Please enter a valid city name.");
     }
