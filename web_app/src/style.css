@@ -1,0 +1,54 @@
+#root {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    /* background-image: url("https://pics.craiyon.com/2023-11-16/wHGM0abcSOWVL1p6KEsCZw.webp");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAkJe4O7M1pCwgRaeSIKNced53b9waVSNouJGrLG10BzGYo8lu4j7qPKJGMZ9XK9nsgd0&usqp=CAU");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+    background-color: #21486C;
+    color: #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px; 
+
+}
+  
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .App {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    margin-right: 5px;
+  }
+  
+  button {
+    padding: 8px 12px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+  }
+  

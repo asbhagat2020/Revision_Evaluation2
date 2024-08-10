@@ -1,4 +1,4 @@
-# Revision_Evaluation2# Weather Dashboard
+# Weather Dashboard
 
 ## Description
 This is a weather dashboard application built with React. It allows users to search for a city, view the current weather and 5-day forecast, and manage a list of favorite cities.
