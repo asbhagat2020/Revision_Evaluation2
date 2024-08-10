@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 import './weatherCss/Favorites.css'
 
