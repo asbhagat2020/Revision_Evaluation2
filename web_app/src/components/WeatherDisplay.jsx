@@ -48,8 +48,8 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
   
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const day = date.getDate(); // Get the day of the month
-    const month = date.getMonth() + 1; // Months are zero-indexed, so add 1
+    const day = date.getDate(); 
+    const month = date.getMonth() + 1; 
     return `${day}/${month}`;
   };
 
