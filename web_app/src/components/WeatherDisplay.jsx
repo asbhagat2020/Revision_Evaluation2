@@ -34,6 +34,7 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
     if (desc.includes("light rain")) return <FaCloudRain size={40} />;
     if (desc.includes("scattered clouds")) return <FaCloudSun size={40} />;
     if (desc.includes("overcast clouds")) return <FaCloud size={40} />;
+    
     if (mainWeather.includes("rain")) return <FaCloudRain size={40} />;
     if (mainWeather.includes("cloud")) return <FaCloud size={40} />;
     if (mainWeather.includes("haze")) return <FaSmog size={40} />;
