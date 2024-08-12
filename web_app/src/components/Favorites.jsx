@@ -1,43 +1,58 @@
-import { useState } from "react";
-import { FaTrashAlt, FaPlusCircle } from "react-icons/fa";
-import './weatherCss/Favorites.css'
+import React, { useEffect, useState } from 'react';
+import { getFavorites, addFavorite, removeFavorite } from '../services/jsonServerService';
+import './weatherCss/Favorites.css';
 
+const Favorites = ({ weatherData, onCitySelect }) => {
+  const [favorites, setFavorites] = useState([]);
 
-const Favorites = ({ favorites, onRemove, onAdd }) => {
-  const [newFavorite, setNewFavorite] = useState("");
+  useEffect(() => {
+    loadFavorites();
+  }, []);
 
-  const handleAddFavorite = () => {
-    if (newFavorite.trim()) {
-      onAdd(newFavorite);
-      setNewFavorite(""); 
-    } else {
-      alert("Please enter a valid city name.");
+  const loadFavorites = async () => {
+    const data = await getFavorites();
+    setFavorites(data);
+  };
+
+  const handleAddFavorite = async () => {
+    if (weatherData) {
+      const cityExists = favorites.some(favorite => favorite.city.toLowerCase() === weatherData.name.toLowerCase());
+      if (cityExists) {
+        alert(`${weatherData.name} is already in your favorites.`);
+        return;
+      }
+      await addFavorite(weatherData.name);
+      loadFavorites(); // Reload favorites after adding a new one
     }
   };
 
+  const handleRemove = async (id) => {
+    await removeFavorite(id);
+    loadFavorites(); // Reload favorites after removal
+  };
+
   return (
-    <div>
-      <h3>Favorites</h3>
-      <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-      <input
-        type="text"
-        id="newFavorite"
-        className="favorite-input"
-        placeholder="Add a new favorite"
-        value={newFavorite}
-        onChange={(e) => setNewFavorite(e.target.value)}
-        required
-      />
-      <FaPlusCircle className="add-favorite-icon" onClick={handleAddFavorite} />
-      </div>
+    <div className="favorites-container">
+      <h3 className="favorites-title">Favorites</h3>
+      <button 
+        className="add-favorite-button" 
+        onClick={handleAddFavorite} 
+        disabled={!weatherData}
+      >
+        Add to Favorites
+      </button>
       <ul className="favorites-list">
-        {favorites.map((fav) => (
-          <li key={fav.id} className="favorite-item">
-            {fav.city}
-            <FaTrashAlt
-              className="remove-favorite-icon"
-              onClick={() => onRemove(fav.id)}
-            />
+        {favorites.map((favorite) => (
+          <li key={favorite.id} className="favorite-item">
+            <span onClick={() => onCitySelect(favorite.city)}>
+              {favorite.city}
+            </span>
+            <button 
+              className="remove-favorite-button" 
+              onClick={() => handleRemove(favorite.id)}
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ul>

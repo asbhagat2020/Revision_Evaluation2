@@ -6,8 +6,25 @@ export const getWeatherData = async (city) => {
   const currentWeather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
   const forecast = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
 
+  const uniqueDailyForecasts = getUniqueDailyForecasts(forecast.data.list);
+
   return {
     currentWeather: currentWeather.data,
-    forecast: forecast.data.list.slice(0, 5),
+    forecast: uniqueDailyForecasts,
   };
+};
+
+const getUniqueDailyForecasts = (list) => {
+  const uniqueForecasts = [];
+  const seenDates = new Set();
+
+  list.forEach((item) => {
+    const date = item.dt_txt.split(' ')[0];
+    if (!seenDates.has(date)) {
+      uniqueForecasts.push(item);  // Add the first forecast of the day
+      seenDates.add(date);
+    }
+  });
+
+  return uniqueForecasts;
 };

@@ -1,54 +1,90 @@
 #root {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    /* background-image: url("https://pics.craiyon.com/2023-11-16/wHGM0abcSOWVL1p6KEsCZw.webp");
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAkJe4O7M1pCwgRaeSIKNced53b9waVSNouJGrLG10BzGYo8lu4j7qPKJGMZ9XK9nsgd0&usqp=CAU");
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;  */
-    background-color: #21486C;
-    color: #ffffff; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    border-radius: 8px; 
-
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  /* background-image: url("https://pics.craiyon.com/2023-11-16/wHGM0abcSOWVL1p6KEsCZw.webp");
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAkJe4O7M1pCwgRaeSIKNced53b9waVSNouJGrLG10BzGYo8lu4j7qPKJGMZ9XK9nsgd0&usqp=CAU");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+  background-color: #21486c;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
-  
 
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .App {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
   }
-  
+}
+
+@media (max-width: 992px) {
+  #root {
+    padding: 1.5rem;
+  }
+
+  .App {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+  }
+
   input[type="text"] {
-    width: 80%;
-    padding: 8px;
-    margin-right: 5px;
+    width: 100%;
+    padding: 12px;
   }
-  
+
   button {
-    padding: 8px 12px;
+    width: 100%;
+    padding: 10px;
   }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
+
   ul li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5px 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+}
+
+@media (max-width: 576px) {
+  .App {
+    padding: 8px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .favorites-container,
+  .weather-display,
+  .search {
+    margin: 0 auto;
+    padding: 10px;
+  }
+}

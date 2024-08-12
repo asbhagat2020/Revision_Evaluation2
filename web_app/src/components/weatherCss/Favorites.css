@@ -1,63 +1,64 @@
-.favorite-input {
-  width: calc(100% - 3rem); 
-  max-width: 400px; 
-  padding: 0.5rem; 
-  border: 1px solid #cccccc;
-  border-radius: 4px; 
-  font-size: 1rem;
-  margin-right: 1rem; 
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); 
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+.favorites-container {
+  margin-top: 20px;
 }
 
-.favorite-input:focus {
-  border-color: #007bff; 
-  outline: none; 
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); 
+.favorites-title {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.add-favorite-icon {
-  cursor: pointer; 
-  color: #007bff; 
-  font-size: 1.5rem; 
-  transition: color 0.3s ease; 
+.add-favorite-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.add-favorite-icon:hover {
-  color: #0056b3; /* Darker color on hover */
+.add-favorite-button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
 }
 
 .favorites-list {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  list-style: none; /* Remove default list styling */
-  padding: 0; /* Remove default padding */
-  margin: 1rem 0; /* Space around the list */
- 
+  list-style-type: none;
+  padding: 0;
 }
 
 .favorite-item {
-  width: 500px;
-  display: flex; /* Use flexbox to align items */
-  justify-content: space-between; /* Space between city and trash icon */
-  align-items: center; /* Center items vertically */
-  padding: 0.5rem; /* Space inside each list item */
-  border-bottom: 1px solid #dddddd; /* Light border between items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background-color: #f9f9f9;
 }
 
-.favorite-item:last-child {
-  border-bottom: none; /* Remove border from the last item */
+.favorite-item span {
+  cursor: pointer;
+  color: #007bff;
 }
 
-.remove-favorite-icon {
-  cursor: pointer; /* Pointer cursor on hover */
-  color: #dc3545; /* Icon color for remove action */
-  font-size: 1rem; /* Icon size */
-  transition: color 0.3s ease; /* Smooth transition for hover effect */
+.favorite-item span:hover {
+  text-decoration: underline;
 }
 
-.remove-favorite-icon:hover {
-  color: #c82333; /* Darker color on hover */
+.remove-favorite-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .favorites-list {
+    padding: 0;
+  }
 }

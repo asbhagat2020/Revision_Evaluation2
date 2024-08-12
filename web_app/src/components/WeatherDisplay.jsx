@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FaSun,
   FaCloud,
@@ -9,6 +9,7 @@ import {
   FaCloudShowersHeavy,
 } from "react-icons/fa";
 import "./weatherCss/WeatherDisplay.css";
+
 const WeatherDisplay = ({ weatherData, forecastData, error }) => {
   const [unit, setUnit] = useState("metric");
 
@@ -22,11 +23,12 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
       : `${Math.ceil((temp * 9) / 5 + 32)}°F`;
   };
 
-  if (!weatherData || !forecastData.length) return;
+  if (!weatherData || !forecastData.length) return null;
 
-  const getWeatherIcon = () => {
-    const mainWeather = weatherData.weather[0].main.toLowerCase();
-    const desc = weatherData.weather[0].description.toLowerCase();
+  const getWeatherIcon = (mainWeather, desc) => {
+    desc = desc.toLowerCase();
+    mainWeather = mainWeather.toLowerCase();
+ 
     if (desc.includes("moderate rain"))
       return <FaCloudShowersHeavy size={40} />;
     if (desc.includes("light rain")) return <FaCloudRain size={40} />;
@@ -37,7 +39,8 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
     if (mainWeather.includes("haze")) return <FaSmog size={40} />;
     if (mainWeather.includes("snow")) return <FaSnowflake size={40} />;
     if (mainWeather.includes("clear")) return <FaSun size={40} />;
-    return <FaCloud size={40} />; // Default icon
+   
+    return <FaCloud size={40} />; 
   };
   
   const formatDate = (dateString) => {
@@ -58,7 +61,7 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
           gap: "20px",
         }}
       >
-        <div className="weather-icon">{getWeatherIcon()}</div>
+        <div className="weather-icon">{getWeatherIcon(weatherData.weather[0].main, weatherData.weather[0].description)}</div>
         <div>
           <div>{displayTemp(weatherData.main.temp)}</div>
           <div style={{ marginTop: "10px" }}>{weatherData.weather[0].main}</div>
@@ -67,7 +70,7 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
       <button className="unit-toggle-button" onClick={toggleUnit}>
         Switch to {unit === "metric" ? "Fahrenheit" : "Celsius"}
       </button>
-      <h3>5-Day Forecast:</h3>
+      <h3>Six-Day Forecast:</h3>
       <div className="Five_Forcast">
         {forecastData.map((forecast, index) => (
           <div key={index} className="seperateDay">
@@ -80,11 +83,11 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
                 gap: "20px",
               }}
             >
-              <div className="weather-icon">{getWeatherIcon()}</div>
+              <div className="weather-icon">{getWeatherIcon(forecast.weather[0].main, forecast.weather[0].description)}</div>
               <div>
                 <div>
                   {displayTemp(forecast.main.temp_min)} /{" "}
-                  {displayTemp(forecast.main.temp_min)}
+                  {displayTemp(forecast.main.temp_max)}
                 </div>
               </div>
             </div>
