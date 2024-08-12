@@ -21,7 +21,7 @@ const getUniqueDailyForecasts = (list) => {
   list.forEach((item) => {
     const date = item.dt_txt.split(' ')[0];
     if (!seenDates.has(date)) {
-      uniqueForecasts.push(item);  // Add the first forecast of the day
+      uniqueForecasts.push(item); 
       seenDates.add(date);
     }
   });
