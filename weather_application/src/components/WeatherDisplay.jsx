@@ -71,7 +71,7 @@ const WeatherDisplay = ({ weatherData, forecastData, error }) => {
       <button className="unit-toggle-button" onClick={toggleUnit}>
         Switch to {unit === "metric" ? "Fahrenheit" : "Celsius"}
       </button>
-      <h3>Six-Day Forecast:</h3>
+      <h3>Five-Day Forecast:</h3>
       <div className="Five_Forcast">
         {forecastData.map((forecast, index) => (
           <div key={index} className="seperateDay">
